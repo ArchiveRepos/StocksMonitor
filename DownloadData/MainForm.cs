@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SymbolList;
 
 namespace DownloadData
 {
@@ -15,6 +16,20 @@ namespace DownloadData
         public MainForm()
         {
             InitializeComponent();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e) {
+
+            SymbolList.SymbolList sl = new SymbolList.SymbolList("NASDAQ");
+
+            this.testBox.AutoCompleteMode = AutoCompleteMode.Suggest;
+            this.testBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+            collection.AddRange(sl.getlist());
+
+            this.testBox.AutoCompleteCustomSource = collection;
+
+
         }
     }
 }

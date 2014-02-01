@@ -9,3 +9,7 @@ C:\Users\Haochen\Documents\GitHub\StocksMonitor\StocksMonitor\obj\Debug\StocksMo
 C:\Users\Haochen\Documents\GitHub\StocksMonitor\StocksMonitor\obj\Debug\StocksMonitor.csproj.GenerateResource.Cache
 C:\Users\Haochen\Documents\GitHub\StocksMonitor\StocksMonitor\obj\Debug\StocksMonitor.exe
 C:\Users\Haochen\Documents\GitHub\StocksMonitor\StocksMonitor\obj\Debug\StocksMonitor.pdb
+C:\Users\Haochen\Documents\GitHub\StocksMonitor\StocksMonitor\bin\Debug\SymbolList\NASDAQ.txt
+C:\Users\Haochen\Documents\GitHub\StocksMonitor\StocksMonitor\bin\Debug\SymbolList\NYSE.txt
+C:\Users\Haochen\Documents\GitHub\StocksMonitor\StocksMonitor\bin\Debug\SymbolList.dll
+C:\Users\Haochen\Documents\GitHub\StocksMonitor\StocksMonitor\bin\Debug\SymbolList.pdb

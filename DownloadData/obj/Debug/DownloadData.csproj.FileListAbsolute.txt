@@ -5,3 +5,7 @@ C:\Users\Haochen\Documents\GitHub\StocksMonitor\DownloadData\obj\Debug\DownloadD
 C:\Users\Haochen\Documents\GitHub\StocksMonitor\DownloadData\obj\Debug\DownloadData.csproj.GenerateResource.Cache
 C:\Users\Haochen\Documents\GitHub\StocksMonitor\DownloadData\obj\Debug\DownloadData.dll
 C:\Users\Haochen\Documents\GitHub\StocksMonitor\DownloadData\obj\Debug\DownloadData.pdb
+C:\Users\Haochen\Documents\GitHub\StocksMonitor\DownloadData\bin\Debug\SymbolList\NASDAQ.txt
+C:\Users\Haochen\Documents\GitHub\StocksMonitor\DownloadData\bin\Debug\SymbolList\NYSE.txt
+C:\Users\Haochen\Documents\GitHub\StocksMonitor\DownloadData\bin\Debug\SymbolList.dll
+C:\Users\Haochen\Documents\GitHub\StocksMonitor\DownloadData\bin\Debug\SymbolList.pdb
