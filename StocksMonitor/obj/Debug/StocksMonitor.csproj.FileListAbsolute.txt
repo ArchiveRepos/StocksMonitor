@@ -1,1 +1,11 @@
 C:\Users\Haochen\Documents\GitHub\StocksMonitor\StocksMonitor\bin\Debug\StocksMonitor.exe.config
+C:\Users\Haochen\Documents\GitHub\StocksMonitor\StocksMonitor\bin\Debug\StocksMonitor.exe
+C:\Users\Haochen\Documents\GitHub\StocksMonitor\StocksMonitor\bin\Debug\StocksMonitor.pdb
+C:\Users\Haochen\Documents\GitHub\StocksMonitor\StocksMonitor\bin\Debug\DownloadData.dll
+C:\Users\Haochen\Documents\GitHub\StocksMonitor\StocksMonitor\bin\Debug\DownloadData.pdb
+C:\Users\Haochen\Documents\GitHub\StocksMonitor\StocksMonitor\obj\Debug\StocksMonitor.csprojResolveAssemblyReference.cache
+C:\Users\Haochen\Documents\GitHub\StocksMonitor\StocksMonitor\obj\Debug\StocksMonitor.window.resources
+C:\Users\Haochen\Documents\GitHub\StocksMonitor\StocksMonitor\obj\Debug\StocksMonitor.Properties.Resources.resources
+C:\Users\Haochen\Documents\GitHub\StocksMonitor\StocksMonitor\obj\Debug\StocksMonitor.csproj.GenerateResource.Cache
+C:\Users\Haochen\Documents\GitHub\StocksMonitor\StocksMonitor\obj\Debug\StocksMonitor.exe
+C:\Users\Haochen\Documents\GitHub\StocksMonitor\StocksMonitor\obj\Debug\StocksMonitor.pdb

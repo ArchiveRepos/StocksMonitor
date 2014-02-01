@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StocksMonitor", "StocksMonitor\StocksMonitor.csproj", "{13395CDA-DFE8-470F-9B01-7C3160EF5C8A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DownloadData", "DownloadData\DownloadData.csproj", "{32B81C90-B8EB-4129-9FC2-B2811C5333BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{13395CDA-DFE8-470F-9B01-7C3160EF5C8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13395CDA-DFE8-470F-9B01-7C3160EF5C8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13395CDA-DFE8-470F-9B01-7C3160EF5C8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32B81C90-B8EB-4129-9FC2-B2811C5333BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32B81C90-B8EB-4129-9FC2-B2811C5333BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32B81C90-B8EB-4129-9FC2-B2811C5333BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32B81C90-B8EB-4129-9FC2-B2811C5333BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
