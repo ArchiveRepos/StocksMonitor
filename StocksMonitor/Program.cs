@@ -19,4 +19,60 @@ namespace StocksMonitor
             Application.Run(new window());
         }
     }
+
+    class Rules {
+        public static string[] items = {"Bid price","Ask price"};
+        public static string[] items_short = { "Bid", "Ask" };
+        public static string[] creteria = { "Greater", "Equal", "Less" };
+        public static string[] creteria_short = { ">", "=", "<" };
+
+        public static string long2short(string[] l, string[] s, string c) {
+            return s[string2ID(l, c)];
+        }
+
+        public static string short2long(string[] l, string[] s, string c) {
+            return l[string2ID(s, c)];
+        }
+
+        private List<string> rules;
+
+        public Rules() {
+            //some initialization
+            rules = null;
+        }
+
+        private static int string2ID(string[] list, string input) {
+            int i = 0;
+            for (i = 0; i < list.Length; i++)
+                if (list[i].Equals(input))
+                    break;
+            return i;
+        }
+
+        private static string ID2string(string[] list, int id) {
+            return list[id];
+        }
+
+        public void addRule(string it, string cr, string va) {
+            rules.Add(string2ID(items, it).ToString() + " " + string2ID(creteria, cr).ToString() + " " + va);
+        }
+  
+        public override string ToString(){
+            string output = "";
+            foreach (string r in rules) {
+                string[] rs = r.Split(' ');
+                output+=(ID2string(items,Convert.ToInt32(rs[0]))+ " is "+ID2string(creteria,Convert.ToInt32(rs[1])) + " than " + rs[2]);
+            }
+            return output;
+        }
+
+        public string ToString(int i) {
+            if (rules.Count > i) {
+                string[] rs = rules[i].Split(' ');
+                return ID2string(items, Convert.ToInt32(rs[0])) + " is " + ID2string(creteria, Convert.ToInt32(rs[1])) + " than " + rs[2];
+            } else
+                return null;            
+        }
+
+    }
 }

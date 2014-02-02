@@ -32,13 +32,13 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.urlTextBox = new System.Windows.Forms.TextBox();
-            this.changeUrl = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.download = new System.Windows.Forms.Button();
+            this.specialTags = new System.Windows.Forms.RichTextBox();
             this.stockSymbols = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.specialTags = new System.Windows.Forms.RichTextBox();
-            this.download = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.changeUrl = new System.Windows.Forms.Button();
+            this.urlTextBox = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -74,34 +74,24 @@
             this.panel1.Size = new System.Drawing.Size(359, 357);
             this.panel1.TabIndex = 1;
             // 
-            // urlTextBox
+            // download
             // 
-            this.urlTextBox.Enabled = false;
-            this.urlTextBox.Location = new System.Drawing.Point(3, 14);
-            this.urlTextBox.Name = "urlTextBox";
-            this.urlTextBox.Size = new System.Drawing.Size(252, 20);
-            this.urlTextBox.TabIndex = 0;
-            this.urlTextBox.Text = "http://finance.yahoo.com/d/quotes.csv";
+            this.download.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.download.Location = new System.Drawing.Point(0, 328);
+            this.download.Name = "download";
+            this.download.Size = new System.Drawing.Size(357, 27);
+            this.download.TabIndex = 4;
+            this.download.Text = "Download";
+            this.download.UseVisualStyleBackColor = true;
+            this.download.Click += new System.EventHandler(this.download_Click);
             // 
-            // changeUrl
+            // specialTags
             // 
-            this.changeUrl.Location = new System.Drawing.Point(261, 12);
-            this.changeUrl.Name = "changeUrl";
-            this.changeUrl.Size = new System.Drawing.Size(91, 23);
-            this.changeUrl.TabIndex = 1;
-            this.changeUrl.Text = "Change URL";
-            this.changeUrl.UseVisualStyleBackColor = true;
-            this.changeUrl.Click += new System.EventHandler(this.changeUrl_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 43);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 16);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Stocks\' symbols: ";
+            this.specialTags.Location = new System.Drawing.Point(3, 253);
+            this.specialTags.Name = "specialTags";
+            this.specialTags.Size = new System.Drawing.Size(349, 69);
+            this.specialTags.TabIndex = 3;
+            this.specialTags.Text = "";
             // 
             // stockSymbols
             // 
@@ -121,23 +111,34 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Special tags:";
             // 
-            // specialTags
+            // label1
             // 
-            this.specialTags.Location = new System.Drawing.Point(3, 253);
-            this.specialTags.Name = "specialTags";
-            this.specialTags.Size = new System.Drawing.Size(349, 59);
-            this.specialTags.TabIndex = 3;
-            this.specialTags.Text = "";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 43);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(112, 16);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Stocks\' symbols: ";
             // 
-            // download
+            // changeUrl
             // 
-            this.download.Location = new System.Drawing.Point(3, 318);
-            this.download.Name = "download";
-            this.download.Size = new System.Drawing.Size(349, 27);
-            this.download.TabIndex = 4;
-            this.download.Text = "Download";
-            this.download.UseVisualStyleBackColor = true;
-            this.download.Click += new System.EventHandler(this.download_Click);
+            this.changeUrl.Location = new System.Drawing.Point(261, 12);
+            this.changeUrl.Name = "changeUrl";
+            this.changeUrl.Size = new System.Drawing.Size(91, 23);
+            this.changeUrl.TabIndex = 1;
+            this.changeUrl.Text = "Change URL";
+            this.changeUrl.UseVisualStyleBackColor = true;
+            this.changeUrl.Click += new System.EventHandler(this.changeUrl_Click);
+            // 
+            // urlTextBox
+            // 
+            this.urlTextBox.Enabled = false;
+            this.urlTextBox.Location = new System.Drawing.Point(3, 14);
+            this.urlTextBox.Name = "urlTextBox";
+            this.urlTextBox.Size = new System.Drawing.Size(252, 20);
+            this.urlTextBox.TabIndex = 0;
+            this.urlTextBox.Text = "http://finance.yahoo.com/d/quotes.csv";
             // 
             // MainForm
             // 
@@ -151,6 +152,7 @@
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Download Data";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
