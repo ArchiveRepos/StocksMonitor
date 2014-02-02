@@ -23,6 +23,15 @@ namespace SymbolList
             return System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location), filename);
         }
 
+        public static string[] readItemNames(string path) {
+            string dirpath = readItemPath(path);
+            string[] files = System.IO.Directory.GetFiles(dirpath, "*.*", System.IO.SearchOption.TopDirectoryOnly);
+            for (int i = 0; i < files.Length; i++) {
+                files[i]=System.IO.Path.GetFileNameWithoutExtension(files[i]);
+            }
+            return files;            
+        }
+
         public SymbolList(string n){
             name = n;
         }

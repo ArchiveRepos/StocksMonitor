@@ -19,17 +19,7 @@ namespace DownloadData
         }
 
         private void MainForm_Load(object sender, EventArgs e) {
-
-            SymbolList.SymbolList sl = new SymbolList.SymbolList("NASDAQ");
-
-            this.urlTextBox.AutoCompleteMode = AutoCompleteMode.Suggest;
-            this.urlTextBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
-            collection.AddRange(sl.getlist());
-
-            this.urlTextBox.AutoCompleteCustomSource = collection;
-
-
+            //initial components in Main form
         }
 
         private static bool changeUrl_clicked = false; // when changeUrl_clicked equal false means the default.
