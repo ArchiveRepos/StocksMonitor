@@ -19,16 +19,29 @@ namespace SymbolList
             }
         }
 
+        public static string readItemPath(string filename) {
+            return System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location), filename);
+        }
+
         public SymbolList(string n){
             name = n;
         }
 
-        public string[] getlist(){
+        private string getTxtfilename() {
             string filename = String.Format(@"SymbolList\{0}.txt", name);
-            string[] lines = System.IO.File.ReadAllLines(System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) , filename));
-            for (int i = 0; i < lines.Length; i++ ) {
-                lines[i]=lines[i].Replace("\t", " ");
+            return filename;
+        }
+
+        private void replace(ref string[] s, string oldone, string newone) {
+            for (int i = 0; i < s.Length; i++) {
+                s[i] = s[i].Replace(oldone, newone);
             }
+        }
+
+        public string[] getlist(){
+            string filename = this.getTxtfilename();
+            string[] lines = System.IO.File.ReadAllLines(SymbolList.readItemPath(filename));
+            this.replace(ref lines, "\t", " ");
             return lines;
         }
     }

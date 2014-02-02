@@ -23,5 +23,16 @@ namespace StocksMonitor
             Dialogue d = new Dialogue();
             d.show();
         }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e) {
+            AboutBox ab = new AboutBox();
+            ab.Show();
+        }
+        private static List<String> column = new List<string>() {"Stock Name","Price"};
+
+        private void window_Load(object sender, EventArgs e) {
+            stock_listView.Columns.Add("try");
+            column.ForEach(name => stock_listView.Columns.Add(name));
+        }
     }
 }
