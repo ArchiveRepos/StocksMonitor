@@ -22,6 +22,11 @@ namespace StocksMonitor
 
     class Watcher {
         private string stock_name;
+        public string shortName {
+            get {
+                return stock_name.Split(' ')[0];
+            }
+        }
         private Rules rule_set;
     }
 

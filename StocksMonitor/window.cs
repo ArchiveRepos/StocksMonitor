@@ -111,6 +111,7 @@ namespace StocksMonitor
             }
         }
 
+        //couldn't work because of the ListViewItem could be ref or out.
         private void blinking_listViewItem(ref ListViewItem it, int R, int G, int B, int times = 10) {
             if ((R > 255 || R < 0) || (G > 255 || G < 0) || (B > 255 || B < 0)) {
                 throw new System.Exception("Parameter not within range");
@@ -138,10 +139,6 @@ namespace StocksMonitor
                for (int i =0; i< rules_listView.Items.Count; i++) {
                     if (this.compare_listViewItems(rules_listView.Items[i],it)) {
                         //this.blinking_listViewItem(ref rules_listView.Items[i], 255, 165, 0);
-                        Color origin = rules_listView.Items[i].BackColor;
-                        rules_listView.Items[i].BackColor = Color.FromKnownColor(KnownColor.Khaki);
-                        System.Threading.Thread.Sleep(500);
-                        rules_listView.Items[i].BackColor = origin;
                         return;
                     }
                 }

@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 using System.Net;
 using System.Web;
-using Newtonsoft.Json.Linq;
 
 namespace StocksMonitor {
     class YQL_connector {
@@ -37,24 +36,12 @@ namespace StocksMonitor {
             return YQL.ToString();
         }
 
-
-    }
-
-    class YQL_stock_connector : YQL_connector {
-        //map words into YQL keywords
-        private static Dictionary<string, string> name2YQL = null;
-        public static void generateDictionary(string[] l, string[] s) {
-            if (l.Length != s.Length)
-                return;
-            else {
-                for (int i = 0; i < l.Length; i++)
-                    name2YQL.Add(s[i], l[i]);
+        //make sure the interenet is availible before call this method.
+        public static string excuteYQL(string YQL) {
+            using (WebClient wc = new WebClient()) {
+                return wc.DownloadString(YQL);
             }
         }
 
-        public YQL_stock_connector() : base() {
-            if (name2YQL.Count == 0)
-                throw new System.Data.DataException("Please make sure call generateDictionary(string, string) first.");
-        }
     }
 }
