@@ -37,8 +37,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.remove_rules = new System.Windows.Forms.Button();
+            this.add_rules = new System.Windows.Forms.Button();
             this.rules_listView = new System.Windows.Forms.ListView();
             this.button1 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -125,8 +125,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.remove_rules);
+            this.groupBox1.Controls.Add(this.add_rules);
             this.groupBox1.Controls.Add(this.rules_listView);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(6, 68);
@@ -136,29 +136,31 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add Watch Rules";
             // 
-            // button3
+            // remove_rules
             // 
-            this.button3.BackgroundImage = global::StocksMonitor.Properties.Resources.minus;
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button3.Location = new System.Drawing.Point(154, 13);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(27, 23);
-            this.button3.TabIndex = 1;
-            this.button3.UseVisualStyleBackColor = true;
+            this.remove_rules.BackgroundImage = global::StocksMonitor.Properties.Resources.minus;
+            this.remove_rules.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.remove_rules.Location = new System.Drawing.Point(154, 13);
+            this.remove_rules.Name = "remove_rules";
+            this.remove_rules.Size = new System.Drawing.Size(27, 23);
+            this.remove_rules.TabIndex = 1;
+            this.remove_rules.UseVisualStyleBackColor = true;
+            this.remove_rules.Click += new System.EventHandler(this.remove_rules_Click);
             // 
-            // button2
+            // add_rules
             // 
-            this.button2.BackgroundImage = global::StocksMonitor.Properties.Resources.Plus;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button2.Location = new System.Drawing.Point(122, 13);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(27, 23);
-            this.button2.TabIndex = 1;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.add_rules.BackgroundImage = global::StocksMonitor.Properties.Resources.Plus;
+            this.add_rules.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.add_rules.Location = new System.Drawing.Point(122, 13);
+            this.add_rules.Name = "add_rules";
+            this.add_rules.Size = new System.Drawing.Size(27, 23);
+            this.add_rules.TabIndex = 1;
+            this.add_rules.UseVisualStyleBackColor = true;
+            this.add_rules.Click += new System.EventHandler(this.add_rules_Click);
             // 
             // rules_listView
             // 
+            this.rules_listView.FullRowSelect = true;
             this.rules_listView.Location = new System.Drawing.Point(6, 42);
             this.rules_listView.Name = "rules_listView";
             this.rules_listView.Size = new System.Drawing.Size(180, 226);
@@ -232,6 +234,7 @@
             // 
             this.stock_listView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.stock_listView.Dock = System.Windows.Forms.DockStyle.Top;
+            this.stock_listView.FullRowSelect = true;
             this.stock_listView.Location = new System.Drawing.Point(0, 0);
             this.stock_listView.Name = "stock_listView";
             this.stock_listView.Size = new System.Drawing.Size(538, 255);
@@ -259,6 +262,8 @@
             this.status.Location = new System.Drawing.Point(0, 396);
             this.status.Name = "status";
             this.status.Size = new System.Drawing.Size(770, 22);
+            this.status.SizingGrip = false;
+            this.status.Stretch = false;
             this.status.TabIndex = 8;
             this.status.Text = "statusStrip1";
             // 
@@ -280,6 +285,7 @@
             this.internet_status.Image = global::StocksMonitor.Properties.Resources.grey;
             this.internet_status.Name = "internet_status";
             this.internet_status.Size = new System.Drawing.Size(16, 17);
+            this.internet_status.ToolTipText = "Check if this program can properly connect to the Internet";
             // 
             // window
             // 
@@ -332,9 +338,9 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.StatusStrip status;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button add_rules;
         private System.Windows.Forms.ListView rules_listView;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button remove_rules;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripStatusLabel internet_status;

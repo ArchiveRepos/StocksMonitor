@@ -15,3 +15,5 @@ C:\Users\Haochen\Documents\GitHub\StocksMonitor\StocksMonitor\bin\Debug\SymbolLi
 C:\Users\Haochen\Documents\GitHub\StocksMonitor\StocksMonitor\bin\Debug\SymbolList.pdb
 C:\Users\Haochen\Documents\GitHub\StocksMonitor\StocksMonitor\obj\Debug\StocksMonitor.AboutBox.resources
 C:\Users\Haochen\Documents\GitHub\StocksMonitor\StocksMonitor\obj\Debug\StocksMonitor.WatchRules.resources
+C:\Users\Haochen\Documents\GitHub\StocksMonitor\StocksMonitor\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Haochen\Documents\GitHub\StocksMonitor\StocksMonitor\bin\Debug\Newtonsoft.Json.xml

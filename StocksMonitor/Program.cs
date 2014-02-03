@@ -20,9 +20,14 @@ namespace StocksMonitor
         }
     }
 
+    class Watcher {
+        private string stock_name;
+        private Rules rule_set;
+    }
+
     class Rules {
-        public static string[] items = {"Bid price","Ask price"};
-        public static string[] items_short = { "Bid", "Ask" };
+        public static string[] items = { "BidRealtime", "AskRealtime" }; //should be key words in YQL results
+        public static string[] items_short = { "Bid", "Ask" }; //short words for showing on screan, should have the same amount as above one.
         public static string[] creteria = { "Greater", "Equal", "Less" };
         public static string[] creteria_short = { ">", "=", "<" };
 
