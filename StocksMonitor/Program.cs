@@ -16,7 +16,7 @@ namespace StocksMonitor
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new window());
+            Application.Run(new window_Form());
         }
     }
 

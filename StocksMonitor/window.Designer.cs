@@ -1,6 +1,6 @@
 ﻿namespace StocksMonitor
 {
-    partial class window
+    partial class window_Form
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(window));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(window_Form));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.downloadDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,24 +40,25 @@
             this.remove_rules = new System.Windows.Forms.Button();
             this.add_rules = new System.Windows.Forms.Button();
             this.rules_listView = new System.Windows.Forms.ListView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Add_to_Watch = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.stock_textBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.log_richTextBox = new System.Windows.Forms.RichTextBox();
-            this.stock_listView = new System.Windows.Forms.ListView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.status = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.internet_status = new System.Windows.Forms.ToolStripStatusLabel();
+            this.Watcher_GridView = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.status.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Watcher_GridView)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -116,7 +117,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.Add_to_Watch);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Location = new System.Drawing.Point(13, 28);
             this.panel1.Name = "panel1";
@@ -168,16 +169,17 @@
             this.rules_listView.UseCompatibleStateImageBehavior = false;
             this.rules_listView.View = System.Windows.Forms.View.Details;
             // 
-            // button1
+            // Add_to_Watch
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(0, 344);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(204, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Add to Watch";
-            this.button1.UseVisualStyleBackColor = true;
+            this.Add_to_Watch.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Add_to_Watch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Add_to_Watch.Location = new System.Drawing.Point(0, 344);
+            this.Add_to_Watch.Name = "Add_to_Watch";
+            this.Add_to_Watch.Size = new System.Drawing.Size(204, 23);
+            this.Add_to_Watch.TabIndex = 2;
+            this.Add_to_Watch.Text = "Add to Watch";
+            this.Add_to_Watch.UseVisualStyleBackColor = true;
+            this.Add_to_Watch.Click += new System.EventHandler(this.Add_to_Watch_Click);
             // 
             // panel3
             // 
@@ -212,9 +214,10 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(4, 265);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(4, 269);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(28, 13);
+            this.label3.Size = new System.Drawing.Size(32, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "Log:";
             // 
@@ -230,22 +233,10 @@
             this.log_richTextBox.TabStop = false;
             this.log_richTextBox.Text = "";
             // 
-            // stock_listView
-            // 
-            this.stock_listView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.stock_listView.Dock = System.Windows.Forms.DockStyle.Top;
-            this.stock_listView.FullRowSelect = true;
-            this.stock_listView.Location = new System.Drawing.Point(0, 0);
-            this.stock_listView.Name = "stock_listView";
-            this.stock_listView.Size = new System.Drawing.Size(538, 255);
-            this.stock_listView.TabIndex = 6;
-            this.stock_listView.UseCompatibleStateImageBehavior = false;
-            this.stock_listView.View = System.Windows.Forms.View.Details;
-            // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.stock_listView);
+            this.panel2.Controls.Add(this.Watcher_GridView);
             this.panel2.Controls.Add(this.log_richTextBox);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Location = new System.Drawing.Point(220, 27);
@@ -270,7 +261,7 @@
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(622, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(653, 17);
             this.toolStripStatusLabel1.Spring = true;
             // 
             // toolStripStatusLabel2
@@ -287,7 +278,16 @@
             this.internet_status.Size = new System.Drawing.Size(16, 17);
             this.internet_status.ToolTipText = "Check if this program can properly connect to the Internet";
             // 
-            // window
+            // Watcher_GridView
+            // 
+            this.Watcher_GridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Watcher_GridView.Location = new System.Drawing.Point(4, 4);
+            this.Watcher_GridView.Name = "Watcher_GridView";
+            this.Watcher_GridView.ReadOnly = true;
+            this.Watcher_GridView.Size = new System.Drawing.Size(531, 258);
+            this.Watcher_GridView.TabIndex = 6;
+            // 
+            // window_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -300,7 +300,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.Name = "window";
+            this.Name = "window_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Stocks Monitor";
             this.Load += new System.EventHandler(this.window_Load);
@@ -314,6 +314,7 @@
             this.panel2.PerformLayout();
             this.status.ResumeLayout(false);
             this.status.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Watcher_GridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -332,9 +333,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RichTextBox log_richTextBox;
-        private System.Windows.Forms.ListView stock_listView;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Add_to_Watch;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.StatusStrip status;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
@@ -344,6 +344,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripStatusLabel internet_status;
+        private System.Windows.Forms.DataGridView Watcher_GridView;
     }
 }
 

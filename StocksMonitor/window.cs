@@ -14,9 +14,9 @@ using System.Net;
 
 namespace StocksMonitor
 {
-    public partial class window : Form
+    public partial class window_Form : Form
     {
-        public window()
+        public window_Form()
         {
             InitializeComponent();
         }
@@ -59,11 +59,16 @@ namespace StocksMonitor
             tb.AutoCompleteCustomSource = collection;
         }
 
+        private void log_message(string message) {
+            log_richTextBox.Text = DateTime.Now.ToShortDateString() + " : "+ message + " \n" + log_richTextBox.Text;
+        }
+
+
         private void window_Load(object sender, EventArgs e) {
             //initial process for main form
-            column_watcher.ForEach(name => stock_listView.Columns.Add(name));
-            column_rules.ForEach(name => rules_listView.Columns.Add(name));
-            log_richTextBox.Text = DateTime.Now.ToString() + " Welcome to StocksMonitor.";
+            //column_watcher.ForEach(name => stock_listView.Columns.Add(name));
+            column_rules.ForEach(name => rules_listView.Columns.Add(name)); // add column rules to listview column
+            this.log_message("Welcome to StocksMonitor.");
 
             //initial exchange_comboBox
             exchange_comboBox.Items.Clear();
@@ -80,8 +85,11 @@ namespace StocksMonitor
                 this.internet_status.Image = Properties.Resources.green;
             } else {
                 this.internet_status.Image = Properties.Resources.red;
-                log_richTextBox.Text = "Internet Status: Not Connected.\n" + log_richTextBox.Text;
+                this.log_message("Can't connect the Internet.");
             }
+
+            //load dirctionary in JsonParser
+            JsonParser.generateDictionary(Rules.items, Rules.items_short);
 
         }
 
@@ -112,7 +120,7 @@ namespace StocksMonitor
         }
 
         //couldn't work because of the ListViewItem could be ref or out.
-        private void blinking_listViewItem(ref ListViewItem it, int R, int G, int B, int times = 10) {
+ /*       private void blinking_listViewItem(ref ListViewItem it, int R, int G, int B, int times = 10) {
             if ((R > 255 || R < 0) || (G > 255 || G < 0) || (B > 255 || B < 0)) {
                 throw new System.Exception("Parameter not within range");
             }
@@ -129,10 +137,10 @@ namespace StocksMonitor
             }
 
             it.BackColor = origin;
-        }
+        } */
 
         private void add_rules_Click(object sender, EventArgs e) {
-            WatchRules wr = new WatchRules();
+            watchRules_Form wr = new watchRules_Form();
             wr.ShowDialog();
             if (wr.DialogResult == DialogResult.OK) {
                ListViewItem it = new ListViewItem(new[] { Rules.long2short(Rules.items, Rules.items_short, wr.item), Rules.long2short(Rules.creteria, Rules.creteria_short, wr.creteria), wr.value });
@@ -145,6 +153,23 @@ namespace StocksMonitor
                this.rules_listView.Items.Add(it);
             }
 
+        }
+
+        private void Add_to_Watch_Click(object sender, EventArgs e) {
+            //test code
+            YQL_connector c = new YQL_connector();
+            List<Quote> lq = new List<Quote>();
+            if (IsConnectedToInternet) {
+                //YQL_connector.excuteYQL(c.getYQL_Json("yahoo.finance.quotes", "SYMBOL in (\"AAPL\""));
+                try {
+                    string url = c.getYQL_url("yahoo.finance.quotes", "symbol in ('AAPL')");
+                    lq.Add(YQLData._download_serialized_json_data<Rootobject>(url).query.results.quote);
+                    Watcher_GridView.DataSource=lq;
+                } catch (Exception ex) {
+                    this.log_message(ex.Message);
+                    return;
+                }
+            }
         }
     }
 }

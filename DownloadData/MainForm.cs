@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SymbolList;
+using System.Net;
 
 namespace DownloadData
 {
@@ -39,12 +40,27 @@ namespace DownloadData
         private void download_Click(object sender, EventArgs e) {
             string url = urlTextBox.Text + "?s=";
             string[] split = stockSymbols.Text.Split(new Char[] { ' ', ',', ':', '\t', '+', '\n' });
+            if (split.Length == 0 || specialTags.Text.Trim().Length == 0) {
+                MessageBox.Show("Not enough information.");
+                return;
+            }
             for (int i = 0; i < split.Length; i++) {
                 url += (split[i]+'+');
             }
-            url += ("&f="+specialTags.Text);
+            url += ("&f="+specialTags.Text.Trim().ToLower());
 
-            System.Diagnostics.Process.Start(url);
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.InitialDirectory = Convert.ToString(Environment.SpecialFolder.MyDocuments);
+            saveFileDialog1.Filter = "Comma-separated values (*.CSV)|*.csv|All Files (*.*)|*.*";
+            saveFileDialog1.FilterIndex = 1;
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK) {
+                WebClient cl = new WebClient();
+                Uri u = new Uri(url);
+                cl.DownloadFileAsync(u, saveFileDialog1.FileName);
+            } 
+
+            //System.Diagnostics.Process.Start(url);
         }
     }
 }

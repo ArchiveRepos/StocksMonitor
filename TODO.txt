@@ -1,0 +1,19 @@
+DownloadData
+	Detailed manual for how to use
+
+SymbolList
+
+
+StocksMonitor
+	Save and Load file
+	Configeration
+	YQL connection
+	Grid View auto load with class type
+	Refresh grid view by certain time interval
+	log export
+	YQLData._download_serialized_json_data should throw exception
+	Status icon on screen right bottom
+	Add beep while error occured
+
+Bugs:
+	Throw exception sometimes while trying to convert json data

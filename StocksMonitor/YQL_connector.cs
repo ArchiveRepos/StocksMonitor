@@ -10,28 +10,23 @@ using System.Web;
 namespace StocksMonitor {
     class YQL_connector {
 
-        private static string url_YQL = "http://query.yahooapis.com/v1/public/yql?";
+        private static string baseurl_YQL = "http://query.yahooapis.com/v1/public/yql?";
  
         public YQL_connector() {
         }
 
         private StringBuilder prefix_YQL(string tables, string condition, string column = "*") {
             StringBuilder YQL = new StringBuilder();
-            string sql_like = "SELECT " + column + " FROM " + tables + " WHERE " + condition;
-            YQL.Append(url_YQL);
-            YQL.Append("q=" + System.Web.HttpUtility.UrlEncode(sql_like));
+            string sql_like = "select " + column + " from " + tables + " where " + condition;
+            YQL.Append(baseurl_YQL);
+            YQL.Append("q=" + System.Web.HttpUtility.UrlPathEncode(sql_like+"\n"));
             return YQL;
         }
 
-        public string getYQL_XML(string tables, string condition, string column="*", string diagonstics = "false" ) {
+        public string getYQL_url(string tables, string condition, string column = "*", string format = "json", string diagonstics = "false") {
             StringBuilder YQL = prefix_YQL(tables, condition, column);
-            YQL.Append("&format=xml");
-            YQL.Append("&diagnostics="+diagonstics);
-            return YQL.ToString();
-        }
-        public string getYQL_Json(string tables, string condition, string column = "*", string diagonstics = "false") {
-            StringBuilder YQL = prefix_YQL(tables, condition, column);
-            YQL.Append("&format=json");
+            YQL.Append(@"&env=store://datatables.org/alltableswithkeys"); //without this parameter will get bad request error.
+            YQL.Append("&format="+format);
             YQL.Append("&diagnostics=" + diagonstics);
             return YQL.ToString();
         }

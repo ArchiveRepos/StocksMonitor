@@ -1,5 +1,5 @@
 ﻿namespace StocksMonitor {
-    partial class WatchRules {
+    partial class watchRules_Form {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -109,7 +109,7 @@
             this.value_textBox.TabIndex = 3;
             this.value_textBox.TextChanged += new System.EventHandler(this.TextChanged);
             // 
-            // WatchRules
+            // watchRules_Form
             // 
             this.AcceptButton = this.Add;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -127,7 +127,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "WatchRules";
+            this.Name = "watchRules_Form";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace StocksMonitor {
-    public partial class WatchRules : Form {
-        public WatchRules() {
+    public partial class watchRules_Form : Form {
+        public watchRules_Form() {
             InitializeComponent();
         }
 

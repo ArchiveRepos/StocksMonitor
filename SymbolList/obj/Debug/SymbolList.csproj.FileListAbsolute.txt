@@ -7,7 +7,6 @@ C:\Users\Haochen\Documents\GitHub\StocksMonitor\SymbolList2\bin\Debug\SymbolList
 C:\Users\Haochen\Documents\GitHub\StocksMonitor\SymbolList2\bin\Debug\SymbolList\NYSE.txt
 C:\Users\Haochen\Documents\GitHub\StocksMonitor\SymbolList\bin\Debug\SymbolList\NASDAQ.txt
 C:\Users\Haochen\Documents\GitHub\StocksMonitor\SymbolList\bin\Debug\SymbolList\NYSE.txt
-C:\Users\Haochen\Documents\GitHub\StocksMonitor\SymbolList\obj\Debug\SymbolList.csprojResolveAssemblyReference.cache
 C:\Users\Haochen\Documents\GitHub\StocksMonitor\SymbolList\bin\Debug\SymbolList.dll
 C:\Users\Haochen\Documents\GitHub\StocksMonitor\SymbolList\bin\Debug\SymbolList.pdb
 C:\Users\Haochen\Documents\GitHub\StocksMonitor\SymbolList\obj\Debug\SymbolList.dll
