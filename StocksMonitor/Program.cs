@@ -18,6 +18,8 @@ namespace StocksMonitor
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new window_Form());
         }
+
+        static List<Watcher> stockList = new List<Watcher>();
     }
 
     class Watcher {
@@ -28,6 +30,17 @@ namespace StocksMonitor
             }
         }
         private Rules rule_set;
+        public Watcher(string name) {
+            stock_name = name;
+            rule_set = new Rules();
+        }
+
+        public void addRules(Rules rule){
+            if (this.rule_set.Equals(rule))
+                return;
+            foreach (var r in rule.RuleSet)
+                rule_set.addRule(r);
+        }
     }
 
     class Rules {
@@ -45,6 +58,7 @@ namespace StocksMonitor
         }
 
         private List<string> rules;
+        public List<string> RuleSet { get; set; }
 
         public Rules() {
             //some initialization
@@ -63,8 +77,23 @@ namespace StocksMonitor
             return list[id];
         }
 
+        public void addRule(Rules rule) {
+            if (rule != null || rule.RuleSet.All(x => string.IsNullOrWhiteSpace(x))) {
+                foreach (var r in rule.RuleSet)
+                    this.addRule(r);
+            }
+        }
+
+        public void addRule(string r) {
+            if (r != null || r != "")
+                this.rules.Add(r);
+        }
+
         public void addRule(string it, string cr, string va) {
-            rules.Add(string2ID(items, it).ToString() + " " + string2ID(creteria, cr).ToString() + " " + va);
+            string rule = string2ID(items, it).ToString() + " " + string2ID(creteria, cr).ToString() + " " + va;
+            if (!this.Contains(rule)) {
+                this.addRule(rule);
+            }
         }
   
         public override string ToString(){
@@ -84,5 +113,22 @@ namespace StocksMonitor
                 return null;            
         }
 
+        public bool Contains(string rule) {
+            if (rule == null || rule == "")
+                return false;
+            foreach (var r in this.RuleSet) {
+                if (r.Equals(rule))
+                    return true;
+            }
+            return false;
+        }
+
+        public override bool Equals(object obj) {
+            if (obj == null || this.GetType() != obj.GetType()) {
+                return false;
+            }
+            Rules other = (Rules)obj;
+            return this.RuleSet.SequenceEqual(other.RuleSet);
+        }
     }
 }

@@ -60,7 +60,7 @@ namespace StocksMonitor
                     this.internet_status.Image = Properties.Resources.red;
                     this.log_message("Can't connect the Internet.");
                 }
-                Thread.Sleep(3000);
+                Thread.Sleep(500);
             }
         }
 
@@ -179,12 +179,19 @@ namespace StocksMonitor
                 }
                this.rules_listView.Items.Add(it);
             }
+        }
 
+        private IEnumerable<System.Windows.Forms.ListViewItem.ListViewSubItem> GetItemsFromListViewControl(){                      
+            foreach (ListViewItem itemRow in this.rules_listView.Items){            
+                for (int i = 0; i < itemRow.SubItems.Count; i++){
+                    yield return itemRow.SubItems[i];
+                }
+            }
         }
 
         private void Add_to_Watch_Click(object sender, EventArgs e) {
         #region test code 
-            YQL_connector c = new YQL_connector();
+       /*   YQL_connector c = new YQL_connector();
             List<Quote> lq = new List<Quote>();
             if (IsConnectedToInternet) {
                 //YQL_connector.excuteYQL(c.getYQL_Json("yahoo.finance.quotes", "SYMBOL in (\"AAPL\""));
@@ -196,7 +203,7 @@ namespace StocksMonitor
                     this.log_message(ex.Message);
                     return;
                 }
-            }
+            } */
         #endregion
 
         }
