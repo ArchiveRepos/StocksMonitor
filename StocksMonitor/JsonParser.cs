@@ -21,7 +21,7 @@ namespace StocksMonitor {
 
         private JArray jsonArray;
 
-        public JsonParser(){
+        private JsonParser(){
             if (name2Json.Count == 0)
                 throw new System.Data.DataException("Please make sure call JsonParser.generateDictionary(string, string) first.");
         }

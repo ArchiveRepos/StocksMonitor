@@ -16,4 +16,4 @@ StocksMonitor
 	Add beep while error occured
 
 Bugs:
-	Throw exception sometimes while trying to convert json data
+	Throw exception sometimes while trying to convert json data 

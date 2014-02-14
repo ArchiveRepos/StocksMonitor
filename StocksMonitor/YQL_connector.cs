@@ -33,8 +33,12 @@ namespace StocksMonitor {
 
         //make sure the interenet is availible before call this method.
         public static string excuteYQL(string YQL) {
-            using (WebClient wc = new WebClient()) {
-                return wc.DownloadString(YQL);
+            try {
+                using (WebClient wc = new WebClient()) {
+                    return wc.DownloadString(YQL);
+                }
+            } catch (Exception e) {
+                throw e;
             }
         }
 

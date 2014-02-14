@@ -24,8 +24,8 @@ namespace StocksMonitor {
         }
     }
 
-    //Generated from sepcial paste from Json data (in VS2013) 
-    public class Quote {
+    // clean the object variables which may cause the "object reference not set to an instance of object"
+     public class Quote {
         [JsonProperty("symbol")]
         public string symbol { get; set; }
         [JsonProperty("Ask")]
@@ -159,7 +159,8 @@ namespace StocksMonitor {
         [JsonProperty("PercentChange")]
         public string PercentChange { get; set; }
     }
-    
+
+     //Generated from sepcial paste from Json data (in VS2013) 
     public class Rootobject{
        public Query query { get; set; }
     }
@@ -174,6 +175,7 @@ namespace StocksMonitor {
     public class Results{
       public Quote quote { get; set; }
     }
+
     /* backup for orginal Quote
     public class Quote {
         [JsonProperty("symbol")]

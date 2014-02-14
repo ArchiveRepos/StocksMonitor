@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using DownloadData;
 using SymbolList;
 using System.Net;
+using System.Threading;
 
 namespace StocksMonitor
 {
@@ -50,6 +51,26 @@ namespace StocksMonitor
             }
         }
 
+        private void checkInternetConnectivity() {
+            while (!_threadStop) {
+                //check internet connectivity
+                if (IsConnectedToInternet) {
+                    this.internet_status.Image = Properties.Resources.green;
+                } else {
+                    this.internet_status.Image = Properties.Resources.red;
+                    this.log_message("Can't connect the Internet.");
+                }
+                Thread.Sleep(3000);
+            }
+        }
+
+        private static bool _threadStop = false;
+        private Thread cit;
+
+        private void killthread() {
+            _threadStop = true;
+        }
+
         private void setAutocomplete(ref TextBox tb, string filename) {
             SymbolList.SymbolList sl = new SymbolList.SymbolList(filename);
             tb.AutoCompleteMode = AutoCompleteMode.Suggest;
@@ -59,8 +80,18 @@ namespace StocksMonitor
             tb.AutoCompleteCustomSource = collection;
         }
 
+        delegate void log_messageCallback(string text);
+
         private void log_message(string message) {
-            log_richTextBox.Text = DateTime.Now.ToShortDateString() + " : "+ message + " \n" + log_richTextBox.Text;
+            // InvokeRequired required compares the thread ID of the 
+            // calling thread to the thread ID of the creating thread. 
+            // If these threads are different, it returns true. 
+            if (this.log_richTextBox.InvokeRequired) {
+                log_messageCallback d = new log_messageCallback(log_message);
+                this.Invoke(d, new object[] { message });
+            } else {
+                this.log_richTextBox.Text = DateTime.Now.ToShortDateString() + " : " + message + " \n" + this.log_richTextBox.Text;
+            }
         }
 
 
@@ -80,13 +111,9 @@ namespace StocksMonitor
             //set auto complete in stock_textBox
             this.setAutocomplete(ref this.stock_textBox, this.exchange_comboBox.Text);
 
-            //check internet connectivity
-            if (IsConnectedToInternet) {
-                this.internet_status.Image = Properties.Resources.green;
-            } else {
-                this.internet_status.Image = Properties.Resources.red;
-                this.log_message("Can't connect the Internet.");
-            }
+            //Thread for check Internet connectivity
+            cit = new Thread(new ThreadStart(this.checkInternetConnectivity));
+            cit.Start();
 
             //load dirctionary in JsonParser
             JsonParser.generateDictionary(Rules.items, Rules.items_short);
@@ -156,13 +183,13 @@ namespace StocksMonitor
         }
 
         private void Add_to_Watch_Click(object sender, EventArgs e) {
-            //test code
+        #region test code 
             YQL_connector c = new YQL_connector();
             List<Quote> lq = new List<Quote>();
             if (IsConnectedToInternet) {
                 //YQL_connector.excuteYQL(c.getYQL_Json("yahoo.finance.quotes", "SYMBOL in (\"AAPL\""));
                 try {
-                    string url = c.getYQL_url("yahoo.finance.quotes", "symbol in ('AAPL')");
+                    string url = c.getYQL_url("yahoo.finance.quotes", "symbol in ('AAPL','YHOO')");
                     lq.Add(YQLData._download_serialized_json_data<Rootobject>(url).query.results.quote);
                     Watcher_GridView.DataSource=lq;
                 } catch (Exception ex) {
@@ -170,6 +197,12 @@ namespace StocksMonitor
                     return;
                 }
             }
+        #endregion
+
+        }
+
+        private void monitorFormClosing(object sender, FormClosingEventArgs e) {
+            this.killthread();
         }
     }
 }

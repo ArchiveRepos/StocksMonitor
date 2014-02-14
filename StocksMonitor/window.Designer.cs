@@ -47,18 +47,18 @@
             this.label3 = new System.Windows.Forms.Label();
             this.log_richTextBox = new System.Windows.Forms.RichTextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.Watcher_GridView = new System.Windows.Forms.DataGridView();
             this.status = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.internet_status = new System.Windows.Forms.ToolStripStatusLabel();
-            this.Watcher_GridView = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.status.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Watcher_GridView)).BeginInit();
+            this.status.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -244,6 +244,15 @@
             this.panel2.Size = new System.Drawing.Size(540, 368);
             this.panel2.TabIndex = 7;
             // 
+            // Watcher_GridView
+            // 
+            this.Watcher_GridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Watcher_GridView.Location = new System.Drawing.Point(4, 4);
+            this.Watcher_GridView.Name = "Watcher_GridView";
+            this.Watcher_GridView.ReadOnly = true;
+            this.Watcher_GridView.Size = new System.Drawing.Size(531, 258);
+            this.Watcher_GridView.TabIndex = 6;
+            // 
             // status
             // 
             this.status.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -278,15 +287,6 @@
             this.internet_status.Size = new System.Drawing.Size(16, 17);
             this.internet_status.ToolTipText = "Check if this program can properly connect to the Internet";
             // 
-            // Watcher_GridView
-            // 
-            this.Watcher_GridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Watcher_GridView.Location = new System.Drawing.Point(4, 4);
-            this.Watcher_GridView.Name = "Watcher_GridView";
-            this.Watcher_GridView.ReadOnly = true;
-            this.Watcher_GridView.Size = new System.Drawing.Size(531, 258);
-            this.Watcher_GridView.TabIndex = 6;
-            // 
             // window_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -303,6 +303,7 @@
             this.Name = "window_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Stocks Monitor";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.monitorFormClosing);
             this.Load += new System.EventHandler(this.window_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -312,9 +313,9 @@
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Watcher_GridView)).EndInit();
             this.status.ResumeLayout(false);
             this.status.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Watcher_GridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
