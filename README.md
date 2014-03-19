@@ -1,3 +1,5 @@
+# This project stops updating due to there are similar apps or softwares can be easily bought.
+
 StocksMonitor
 =============
 
